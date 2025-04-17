@@ -42,7 +42,7 @@ const analyzeDOM = async (pageContent, failedSelector) => {
         // Return the alternatives
         return alternatives;
     } catch (error) {
-        console.error('Error analyzing DOM:', error);
+        logger.error('Error analyzing DOM:', error);
         return [];
     }
 };
@@ -308,7 +308,7 @@ const findRobustAlternatives = (document, failedSelector, alternatives) => {
             }
         });
     } catch (error) {
-        console.error('Error finding robust alternatives:', error);
+        logger.error('Error finding robust alternatives:', error);
     }
 };
 
