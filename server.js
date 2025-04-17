@@ -20,14 +20,14 @@ app.get('/', (req, res) => {
     res.send('cf-analyzer-service is running!');
 });
 
-app.post('/api/mappings', async (req, res) => {
+app.post('/api/analyze', async (req, res) => {
+    const {html, selector} = req.body;
     try {
-        const {version} = req.query;
-        const mappings = await analyzerService.analyzeDom(version);
-        res.json(mappings);
+        const alternatives = await analyzerService.analyzeDOM(html, selector);
+        res.json(alternatives);
     } catch (error) {
-        logger.error('Error fetching mappings:', error);
-        res.status(500).json({error: 'Failed to get mappings'});
+        logger.error('Error:', error);
+        res.status(500).json({error: 'Failed to get alternatives'});
     }
 });
 
