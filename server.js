@@ -31,7 +31,7 @@ app.post('/api/analyze', async (req, res) => {
     }
 });
 
-const server = app.listen(PORT, () => {
+app.listen(PORT, () => {
     logger.info(`CF Analyzer Service running on port ${PORT}`);
 }).on('error', (err) => {
     logger.error('Failed to start server:', err);
